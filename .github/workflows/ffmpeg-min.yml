@@ -1,0 +1,27 @@
+# Copia de .github/workflows/ffmpeg-min.yml del repo enzomacg/ts3overlay-releases.
+# Compila el ffmpeg mínimo del editor (tools/ffmpeg-min/build.sh) y lo deja como artefacto.
+name: ffmpeg-min
+on:
+  workflow_dispatch:
+  push:
+    branches: [ffmpeg-min]
+    paths: ['tools/ffmpeg-min/**', '.github/workflows/ffmpeg-min.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dependencias
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mingw-w64 nasm yasm pkg-config meson ninja-build clang llvm zip make
+      - name: Compilar
+        run: bash tools/ffmpeg-min/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: editor-min
+          path: out/editor-min.zip
+          retention-days: 7
