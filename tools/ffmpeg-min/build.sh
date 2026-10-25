@@ -90,8 +90,8 @@ git clone -q --depth 1 -b "$FFMPEG_TAG" https://github.com/FFmpeg/FFmpeg.git ffm
 cd ffmpeg
 DEMUXERS=mov,matroska,avi,flv,mpegts,mp3,wav,ogg,flac,aac,ac3,eac3,concat,image2,png_pipe,mjpeg,h264,hevc,ivf,m4v
 MUXERS=mp4,mov,ipod,wav,image2,null,matroska,adts
-DECODERS=h264,hevc,av1,libdav1d,vp8,vp9,libvpx_vp9,mpeg4,mjpeg,png,qtrle,aac,aac_latm,mp3,mp3float,mp2,opus,vorbis,flac,ac3,eac3,alac,pcm_s16le,pcm_s16be,pcm_s24le,pcm_s32le,pcm_f32le,pcm_f64le,pcm_u8,pcm_alaw,pcm_mulaw
-ENCODERS=libx264,h264_nvenc,aac,png,qtrle,pcm_s16le
+DECODERS=wrapped_avframe,h264,hevc,av1,libdav1d,vp8,vp9,libvpx_vp9,mpeg4,mjpeg,png,qtrle,aac,aac_latm,mp3,mp3float,mp2,opus,vorbis,flac,ac3,eac3,alac,pcm_s16le,pcm_s16be,pcm_s24le,pcm_s32le,pcm_f32le,pcm_f64le,pcm_u8,pcm_alaw,pcm_mulaw
+ENCODERS=wrapped_avframe,libx264,h264_nvenc,aac,png,qtrle,pcm_s16le
 PARSERS=h264,hevc,av1,vp8,vp9,aac,aac_latm,mpegaudio,opus,vorbis,flac,ac3,png,mjpeg,mpeg4video
 HWACCELS=h264_nvdec,hevc_nvdec,av1_nvdec,vp8_nvdec,vp9_nvdec
 FILTERS=scale,scale_cuda,hwdownload,hwupload,hwupload_cuda,format,aformat,aresample,overlay,trim,atrim,concat,setpts,asetpts,volume,volumedetect,showwavespic,showwaves,null,anull,split,asplit,fps,select,aselect,crop,pad,copy,acopy,color,testsrc,anullsrc,nullsrc,colorchannelmixer,fade,afade,amix,apad,pan
