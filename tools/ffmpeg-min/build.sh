@@ -80,7 +80,7 @@ echo "::endgroup::"
 echo "::group::libvpx (solo decoder VP9, para el alfa de la marca)"
 git clone -q --depth 1 -b "$VPX_TAG" https://chromium.googlesource.com/webm/libvpx
 ( cd libvpx && CROSS=$HOST- ./configure --target=x86_64-win64-gcc --prefix="$PREFIX" \
-    --disable-examples --disable-tools --disable-docs --disable-unit-tests --disable-encoders --disable-vp8 \
+    --disable-examples --disable-tools --disable-docs --disable-unit-tests --disable-vp9-encoder --disable-vp8 \
     --enable-static --disable-shared --as=nasm \
   && make -j"$JOBS" && make install )
 echo "::endgroup::"
