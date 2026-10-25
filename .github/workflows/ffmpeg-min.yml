@@ -15,9 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Dependencias
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
+          # man-db regenera el índice de manuales en cada install y en 24.04 tarda muchísimo
+          sudo rm -f /var/lib/man-db/auto-update
           sudo apt-get update -qq
-          sudo apt-get install -y -qq mingw-w64 nasm yasm pkg-config meson ninja-build clang llvm zip make
+          sudo apt-get install -y -qq --no-install-recommends gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 binutils-mingw-w64-x86-64 mingw-w64-x86-64-dev nasm pkg-config meson ninja-build clang zip make
       - name: Compilar
         run: bash tools/ffmpeg-min/build.sh
       - uses: actions/upload-artifact@v4
